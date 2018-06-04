@@ -1,0 +1,111 @@
+// Mixins
+
+@mixin background {
+  background-repeat: no-repeat !important;
+  background-size: cover !important;
+}
+
+@mixin pageLayout {
+  background-color: #ffffff;
+  padding: 40px 0;
+  h1, h3 {
+    text-align: center;
+  }
+
+  h1 {
+    text-align: center;
+    font-weight: 600;
+    margin: 36px 0;
+    font-size: 46px;
+  }
+  h3 {
+    font-size: 30px;
+    font-weight: 500;
+    margin: 1em 0;
+  }
+  p, ul {
+    line-height: 2rem;
+    font-size: 19px;
+    letter-spacing: .02em;
+    width: 720px;
+    margin: 1.5em auto;
+    max-width: 100%;
+  }
+}
+
+@mixin galleryStyle {
+  .container_flex, .container_flex_full {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .item {
+    flex-basis: 50%;
+    justify-content: space-around;
+    border: 1px solid transparentize(white, 0.25);
+    @include mQ(425px) {
+      flex-basis: 100% !important;
+    }
+  }
+  .container_flex_full {
+    .item {
+      flex-basis: (100% / 3);
+    }
+  }
+  .image {
+    @include background;
+    height: 240px;
+    position: relative;
+  }
+}
+
+@mixin input {
+  width: 100%;
+  border: 1px solid #ccc;
+  // font-family: Roboto,sans-serif,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  padding: 10px;
+  outline: 0;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  color: #000;
+  margin: 0;
+}
+
+@mixin btnSubmit {
+  padding: 14px;
+  font-weight: 500;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1.1px;
+  -webkit-transition: all .4s ease-out;
+  -moz-transition: all .4s ease-out;
+  -o-transition: all .4s ease-out;
+  transition: all .4s ease-out;
+  text-align: center;
+  line-height: 1.2em;
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #000;
+  background-image: none;
+  box-shadow: none;
+}
+
+@mixin mQ($args...){
+  @if length($args) == 1{
+    @media screen and (max-width: nth($args, 1)){
+      @content;
+    }
+  }
+  @if length($args) == 2{
+    @media screen and (max-width: nth($args, 1)) and (min-width: nth($args, 2)){
+      @content;
+    }
+  }
+}
+
+@mixin mQM($args) {
+  @media screen and (min-width: $args) {
+    @content;
+  }
+}

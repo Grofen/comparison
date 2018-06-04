@@ -1,0 +1,693 @@
+@import "mixin";
+@import "variables";
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+body {
+  background: $bodyBackground;
+  font-family: 'Montserrat', sans-serif;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+a {
+  &:hover {
+    text-decoration: none;
+  }
+  color: #000000;
+}
+
+// ----------- Navbar ---------------
+#main_nav {
+  background-color: #ffffff !important;
+
+  .navbar-nav .nav-link {
+    color: #000000;
+    font-size: 18px;
+    // font-weight: 600;
+  }
+  .navbar-brand {
+    @include mQ(425px) {
+      font-size: 25px;
+    }
+  }
+  .dropdown-toggle{
+    &:after {
+      // display: none;
+    }
+  }
+  .navbar-toggler {
+    outline: none;
+    &:after {
+      content: "";
+      background-image: url(../img/navbar-button-icon.svg);
+      background-repeat: no-repeat;
+      background-position: 50%;
+      position: absolute;
+      top: 13%;
+      right: 15px;
+      width: 45px;
+      height: 45px;
+      transition: all .3s;
+    }
+    border: none;
+    background-color: #000000;
+    border-radius: 50%;
+    width: 46px;
+    height: 46px;
+  }
+  .dropdown-menu {
+    border-radius: 0;
+  }
+}
+
+// ----------- Slider --------------
+.home_slider_section {
+  // @include background;
+  position: relative;
+  background-color: #000;
+  // margin-bottom: 50px;
+  video {
+    width: 100%;
+    height: 100%;
+  }
+}
+#date__festivasl {
+  transition: all .3s;
+}
+.home_slider_section .caption {
+  background: rgba(0,0,0,0.3);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  @include mQ(425px) {
+    display: none;
+  }
+  .description__container {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    color: #fff;
+    @include mQ(425px) {
+      position: relative;
+      padding: 10px;
+      top: auto;
+      left: auto;
+    }
+
+    h1 {
+      font-size: 48px;
+      margin-bottom: 30px;
+      font-weight: 600;
+      @include mQ(425px) {
+        font-size: 35px;
+      }
+    }
+  }
+}
+.home_slider_section.aboutFeel {
+  @include background;
+}
+
+
+// ---------------- Movies Section --------------
+.movies__section {
+  background-color: #ffffff;
+  padding: 50px 0 70px;
+
+  .searchBar {
+    width: 100%;
+    outline: 0;
+    border: none;
+    border-bottom: 1px solid #999;
+    font-size: 20px;
+    padding: .5em .5em .4em 2em;
+    font-weight: 300;
+    @include mQ(768px) {
+      margin-bottom: 15px;
+      // font-size: 12px;
+    }
+  }
+  .search_Icon {
+    font-size: 26px;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+  }
+  .dateOfMovie {
+    display: none;
+  }
+  .btn__container {
+    margin-bottom: 50px;
+  }
+  .btn__movie {
+    display: inline-block;
+    background-color: #ffffff;
+    color: #000000;
+    border: 1px solid #ccc;
+    padding: 15px;
+    width: 49%;
+    cursor: pointer;
+    text-align: center;
+    i {
+      margin-right: 5px;
+    }
+    &:hover {
+      background-color: #000000;
+      color: #ffffff;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+  .btn__movie.active {
+    background-color: #000000;
+    color: #ffffff;
+  }
+  .container_flex, .container_flex_full {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .item {
+    flex-basis: 50%;
+    justify-content: space-around;
+    border: 1px solid transparentize(white, 0.25);
+    @include mQ(425px) {
+      flex-basis: 100% !important;
+    }
+  }
+  .container_flex_full {
+    .item {
+      flex-basis: (100% / 3);
+      @include mQ(768px) {
+        flex-basis: (100% / 2);
+      }
+    }
+  }
+  .image {
+    @include background;
+    height: 240px;
+    position: relative;
+  }
+  .date__movie {
+    position: absolute;
+    top: 5px;
+    left: 10px;
+  }
+  .caption {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    color: #ffffff;
+    a {
+      color: #ffffff;
+      &:hover {
+        color: #ffffff;
+      }
+    }
+  }
+  .date__movie span {
+    padding: 2px 5px;
+    display: inline-block;
+    background: rgba(255,255,255,.2);
+    margin-right: 5px;
+    border-radius: 2px;
+    transition: all ease 250ms;
+    font-size: 13px;
+    &:hover {
+      background-color: #ffffff;
+      color: #000000;
+    }
+  }
+  .film_title {
+    bottom: 30px;
+    font-size: 17px;
+  }
+  .film_director {
+    bottom: 10px;
+    font-size: 14px;
+  }
+  .film_director, .film_title {
+    position: absolute;
+    left: 20px;
+  }
+  .full_width_movie {
+    display: none;
+  }
+}
+// ----------- Calendar -----------
+.calendar__wrap {
+  .calendar-widget {
+      position: relative;
+      text-align: center;
+      font-size: 14px;
+      font-weight: 500;
+      width: 100%;
+      padding-top: 20px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      height: 350px;
+      table {
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        // height: 100%;
+      }
+  }
+  .date-btn {
+      padding: 10px;
+      cursor: pointer;
+      text-align: center;
+      &:hover {
+        background: #ccc;
+      }
+  }
+  .active {
+    background-color: #000;
+    color: #ffffff;
+    &:hover {
+      background-color: #000;
+    }
+  }
+  th {
+      color: grey;
+      text-align: center;
+      height: 38px;
+      padding-top: 30px;
+  }
+  .calendar-month {
+      font-size: 26px;
+      font-weight: 500;
+      color: #000;
+      margin-top: 20px;
+  }
+  .no-screenings.date-btn {
+      color: #ccc;
+      cursor: default;
+      &:hover {
+        background: 0 0;
+      }
+  }
+}
+
+// ---------- Email Section ------------
+.quote__section {
+  padding: 70px 0 25px;
+  .image {
+    @include background;
+  }
+  .slide {
+    p {
+      text-align: center;
+      font-size: 35px;
+      position: relative;
+    }
+  }
+  .slick-prev, .slick-next {
+    &:before, &:after {
+      color: #000;
+    }
+  }
+}
+// ---------- Submit Page ----------
+.submit__section {
+  padding: 100px 0 50px;
+
+  .main_title {
+    font-weight: bolder;
+    margin-bottom: 30px;
+  }
+  span {
+    font-size: 18px;
+  }
+  input, textarea {
+    @include input;
+  }
+  .subutton {
+    input {
+      @include btnSubmit;
+      // text-align: right;
+      width: 200px;
+      @include mQ(425px) {
+        width: 100%;
+      }
+    }
+  }
+  .movies_submit_form {
+    padding: 15px;
+    border: 3px solid #eaeaea;
+    background-color: #fff;
+  }
+  .mail_detail {
+    @include mQ(768px) {
+      display: none;
+    }
+    h4 {
+      font-size: 14px;
+      font-weight: bolder;
+      margin-bottom: 10px;
+    }
+    .textWrapper {
+      margin-left: 5px;
+      border: 3px solid #eaeaea;
+      padding: 20px 25px 10px;
+      margin-bottom: 12px;
+      background: #fff;
+      font-size: 14px;
+      // height: 50%;
+    }
+  }
+}
+
+
+// ----------- About ---------
+.about__section {
+  margin-bottom: 50px;
+
+  h1 {
+    font-weight: bolder;
+    margin: 70px 0 42px;
+  }
+  p {
+    margin: 1.5em auto;
+    width: 720px;
+    max-width: 100%;
+    font-size: 19px;
+  }
+}
+
+.quote_section_about {
+  background-color: #ffffff;
+  padding: 70px 50px;
+
+  a {
+    &:hover {
+      color: #000;
+    }
+  }
+}
+
+// ------------ Program Page ---------
+.page__header {
+  @include background;
+  height: 464px;
+
+  .centered {
+    display: table;
+    height: 100%;
+    background: rgba(0,0,0,.4);
+    width: 100%;
+  }
+  .inner_header {
+    display: table-cell;
+    vertical-align: middle;
+    padding: 0 10%;
+    color: #ffffff;
+    text-align: center;
+
+    p {
+      max-width: 720px;
+      width: 100%;
+      margin: .5em auto 0;
+      a {
+        color: #ffffff;
+        text-decoration: underline;
+        &:hover {
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}
+.program_section {
+  padding: 6rem 0;
+  background-color: #ffffff;
+
+  .table {
+    margin: 3em auto;
+    width: 720px;
+    max-width: 100%;
+  }
+  .head {
+    border-bottom: 1px solid #666;
+  }
+  h1 {
+    text-align: center;
+    font-weight: 600;
+    margin: 36px 0;
+    font-size: 46px;
+  }
+  h5 {
+    font-size: 24px;
+    font-weight: 500;
+    color: #000;
+  }
+  .row.hover {
+    padding: .75em 0;
+    &:hover {
+      background: #f2f2f2;
+    }
+  }
+}
+#Ivo, #BB {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+
+    .wrap_img {
+      border-radius: 50%;
+    }
+    .imgcontainer {
+        text-align: center;
+        margin: 50px 0 12px 0;
+        position: relative;
+    }
+    .details {
+      max-width: 720px;
+      width: 100%;
+      margin: 0 auto;
+      h1 {
+        font-weight: 600;
+        margin: 25px 0;
+      }
+      p {
+        line-height: 2em;
+        margin-bottom: 50px;
+        padding: 0 25px;
+      }
+    }
+    .cancelbtn {
+        width: auto;
+        padding: 10px 18px;
+        background-color: #f44336;
+    }
+    img.avatar {
+        width: 40%;
+        @include mQ(768px) {
+          margin-top: 15px;
+          width: 90%;
+        }
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 5% auto 15% auto;
+        border: 1px solid #888;
+        width: 60%;
+        @include mQ(768px) {
+          width: 90%;
+        }
+    }
+    .close {
+        position: absolute;
+        right: 25px;
+        top: -30px;
+        color: #000;
+        font-size: 35px;
+        font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: red;
+        cursor: pointer;
+    }
+
+    .animate {
+        -webkit-animation: animatezoom 0.6s;
+        animation: animatezoom 0.6s
+    }
+    @-webkit-keyframes animatezoom {
+        from {-webkit-transform: scale(0)}
+        to {-webkit-transform: scale(1)}
+    }
+
+    @keyframes animatezoom {
+        from {transform: scale(0)}
+        to {transform: scale(1)}
+    }
+}
+
+// ------------ Awards Page ----------
+.awards_section {
+  @include pageLayout;
+}
+
+// ----------- Gallery Page -----------
+.gallery_header_section {
+  @include pageLayout;
+  .justify-content-center {
+    .photo-col {
+      padding-right: 5px;
+      padding-left: 5px;
+      margin-bottom: 10px;
+      @include mQ(425px) {
+        padding: 0 10px;
+        margin-bottom: 10px;
+      }
+    }
+    .row {
+      // margin-bottom: 10px;
+      @include mQ(425px) {
+        // margin-bottom: 0;
+      }
+      a {
+        // padding: 0 5px;
+        @include mQ(425px) {
+          // padding-bottom: 15px;
+        }
+      }
+    }
+  }
+}
+
+// ---------- singleMovie -----------
+.single_movie_section {
+  background: #fff;
+  padding: 0;
+  width: 100%;
+  margin-top: 0;
+
+  #film_img {
+    @include background;
+    margin: 0 auto;
+    height: 420px;
+  }
+
+  .film_header {
+    text-align: center;
+    h1 {
+      font-weight: 600;
+      font-size: 64px;
+      margin-top: 24px;
+    }
+    .director {
+      font-weight: 500;
+      font-size: 19px;
+    }
+    .quick-info {
+      line-height: 2rem;
+      letter-spacing: .02em;
+      span {
+        font-size: 16px;
+        &:after {
+          content: ' | ';
+          padding: 0 .5em;
+          color: #ccc;
+        }
+        &:last-child {
+          &:after {
+            content: '';
+            padding: 0;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+// ----------- Footer -------------
+footer {
+    background: #000;
+    padding: 3rem 0 4rem;
+    // margin-top: 50px;
+    color: #fff;
+    width: 100%;
+    z-index: -1;
+
+
+    ul.list {
+      list-style: none;
+      text-align: center;
+      padding: 0;
+      margin: 10px 0;
+      @include mQ(425px) {
+        display: none;
+      }
+    }
+    li {
+      margin-bottom: 10px;
+    }
+    .title {
+      font-weight: 600;
+      font-size: 14px;
+      text-transform: uppercase;
+      @include mQ(425px) {
+        display: none;
+      }
+    }
+    a {
+      color: #ffffff;
+      font-size: 14px;
+      &:hover {
+        color: #ffffff;
+      }
+    }
+    .logo__footer {
+      font-size: 30px;
+      // margin-bottom: 25px;
+      font-weight: 600;
+      @include mQ(425px) {
+        margin-bottom: 20px;
+      }
+    }
+    .social-container {
+      font-size: 32px;
+      margin: 2rem;
+      a {
+        padding: 0 16px;
+        @include mQ(425px) {
+          padding: 0 10px;
+        }
+      }
+    }
+    .festival-info {
+        font-size: .8rem;
+        font-weight: 300;
+        color: #ccc;
+        text-align: center;
+    }
+}
+
+.slick-slide img {
+  width: 100%;
+}

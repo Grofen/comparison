@@ -1,0 +1,18 @@
+{
+  "movies": [
+    {
+      "name": "Ava",
+      "director": "Sadaf Foroughi",
+      "image": "ava_05.jpg",
+      "time": ["12:15pm", "7:10pm"],
+      "date": 3
+    },
+    {
+      "name": "Call Me By Your Name",
+      "director": "Luca Guadagnino",
+      "image": "call_me_by_your_name_2.jpg",
+      "time": ["12:15pm", "7:15pm"],
+      "date": 4
+    }
+  ]
+}

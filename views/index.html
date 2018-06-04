@@ -1,0 +1,186 @@
+    <!-- Header -->
+    {{> header}}
+
+      <!-- Slider -->
+      <section class="home_slider_section">
+        <video autoplay muted loop>
+          <source src="img/feelM2.mp4" type="video/mp4">
+          Your browser does not support HTML5 video.
+        </video>
+        <div class="caption">
+          <div class="description__container">
+            <h1 class="title">FEELMOTION 2018</h1>
+            <strong class="block"></strong>
+            <div class="description">
+              <h2>Ticket sale has started!</h2>
+              <p>Check out the programme and order your tickets.</p>
+              <p id="date__festivasl"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Movies Section -->
+      <section class="movies__section">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-4 col-md-12 col-sm-12">
+              <div class="btn__container">
+                <div class="btn__movie calendar_btn active" onclick="showCalendar();">
+                  <i class="fa fa-calendar" aria-hidden="true"></i>Calendar
+                </div>
+                <div class="btn__movie collection_btn" onclick="showCollection();">
+                  <i class="fa fa-th-list" aria-hidden="true"></i>Collection
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-8 col-md-12 col-sm-12">
+              <i class="fa fa-search search_Icon" aria-hidden="true"></i>
+              <input id="searchM" class="searchBar" type="text" name="" value="" placeholder="Discover films, talks & events">
+            </div>
+          </div>
+          <div class="row calendar_width">
+            <div class="col-lg-4">
+              <div class="calendar__wrap">
+                <div class="calendar-widget">
+                  <span class="calendar-month"><strong>April 2018</strong></span>
+                  <table>
+                    <tbody>
+                      <tr>
+                        <th>S</th>
+                        <th>M</th>
+                        <th>T</th>
+                        <th>W</th>
+                        <th>T</th>
+                        <th>F</th>
+                        <th>S</th>
+                      </tr>
+                      <tr>
+                        <td class="1 no-screenings date-btn">1</td>
+                        <td class="2 date-btn date active">2</td>
+                        <td class="3 date-btn date">3</td>
+                        <td class="4 date-btn date">4</td>
+                        <td class="5 date-btn date">5</td>
+                        <td class="6 date-btn date">6</td>
+                        <td class="7 no-screenings date-btn">7</td>
+                      </tr>
+                        <tr>
+                          <td class="8 no-screenings date-btn">8</td>
+                          <td class="9 no-screenings date-btn">9</td>
+                          <td class="10 no-screenings date-btn">10</td>
+                          <td class="11 no-screenings date-btn">11</td>
+                          <td class="12 no-screenings date-btn">12</td>
+                          <td class="13 no-screenings date-btn">13</td>
+                          <td class="14 no-screenings date-btn">14</td>
+                        </tr>
+                        <tr>
+                          <td class="15 no-screenings date-btn">15</td>
+                          <td class="16 no-screenings date-btn">16</td>
+                          <td class="17 no-screenings date-btn">17</td>
+                          <td class="18 no-screenings date-btn">18</td>
+                          <td class="19 no-screenings date-btn">19</td>
+                          <td class="20 no-screenings date-btn">20</td>
+                          <td class="21 no-screenings date-btn">21</td>
+                        </tr>
+                        <tr>
+                          <td class="22 no-screenings date-btn">22</td>
+                          <td class="23 no-screenings date-btn">23</td>
+                          <td class="24 no-screenings date-btn">24</td>
+                          <td class="25 no-screenings date-btn">25</td>
+                          <td class="26 no-screenings date-btn">26</td>
+                          <td class="27 no-screenings date-btn">27</td>
+                          <td class="28 no-screenings date-btn">28</td>
+                        </tr>
+                        <tr>
+                          <td class="29 no-screenings date-btn">29</td>
+                          <td class="30 no-screenings date-btn no-screenings">30</td>
+                          <td class="empty date-btn"></td>
+                          <td class="empty date-btn"></td>
+                          <td class="empty date-btn"></td>
+                          <td class="empty date-btn"></td>
+                          <td class="empty date-btn"></td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+            </div>
+
+            <div class=" col-lg-8">
+              <div class="container_flex">
+                {{#each result}}
+                <div class="item">
+                  <div class="image" style="background-image: url({{link}});">
+                    <div class="caption">
+                      <div class="date__movie">
+                        <div class="dateOfMovie">{{date}}</div>
+                        {{#each screening}}<span>{{this}}</span>{{/each}}
+                      </div>
+                      <a href="/films/{{_id}}">
+                        <div class="film_title">{{name}}</div>
+                        <div class="film_director">{{director}}</div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div>
+          </div>
+
+          <div class="row full_width_movie">
+            <div class=" col-lg-12">
+              <div class="container_flex_full">
+                {{#each result}}
+                <div class="item">
+                  <div class="image" style="background-image: url({{link}});">
+                    <div class="caption">
+                      <div class="date__movie">
+                        <div class="dateOfMovie">{{date}}</div>
+                        {{#each screening}}<span>{{this}}</span>{{/each}}
+                      </div>
+                      <a href="/films/{{_id}}">
+                        <div class="film_title">{{name}}</div>
+                        <div class="film_director">{{director}}</div>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                {{/each}}
+              </div>
+            </div><!-- /collection fullWidth -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Email section -->
+      <section class="quote__section">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-12 item">
+              <section class="clients-logos-container">
+                <div class="quote-slider">
+                  <div class="slide">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 item">
+                      <div>
+                        <p>I just realized what FEELMOTION actually stands for: Films are Fucking Fantastic.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="slide">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 item">
+                      <div>
+                        <p>I just realized what TIFF actually stands for: Toronto Is Fucking Fantastic.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <!-- JS Files & Footer -->
+    {{> footer}}
